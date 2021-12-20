@@ -72,7 +72,7 @@ Page {
                         dayCount: 365
                     }
                     ListElement {
-                        name: qsTr("agena")
+                        name: qsTr("agenda")
                         dayCount: -1
                     }
                 }

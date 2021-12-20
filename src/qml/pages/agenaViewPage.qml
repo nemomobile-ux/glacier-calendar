@@ -24,11 +24,11 @@ import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
 
 Item{
-    id: agenaViewPage
+    id: agendaViewPage
     anchors.fill: parent
 
     Label{
         anchors.centerIn: parent
-        text: "Agena: Not ready"
+        text: "Agenda: Not ready"
     }
 }

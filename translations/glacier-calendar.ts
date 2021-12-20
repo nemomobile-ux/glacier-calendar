@@ -38,7 +38,7 @@
     </message>
     <message>
         <location filename="../src/qml/pages/CalendarViewPage.qml" line="75"/>
-        <source>agena</source>
+        <source>agenda</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
