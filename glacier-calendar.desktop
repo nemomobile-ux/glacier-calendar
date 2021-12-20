@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Icon=/usr/share/glacier-calendar/icons/glacier-calendar.png
+Exec=/usr/bin/glacier-calendar
+Name=Calendar
+Comment=GlacierUX calendar application
