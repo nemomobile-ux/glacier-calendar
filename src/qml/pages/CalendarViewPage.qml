@@ -56,22 +56,27 @@ Page {
                 model: ListModel {
                     id: viewsModel
                     ListElement {
+                        pageName: "day"
                         name: qsTr("day")
                         dayCount: 1
                     }
                     ListElement {
+                        pageName: "week"
                         name: qsTr("week")
                         dayCount: 7
                     }
                     ListElement {
+                        pageName: "month"
                         name: qsTr("month")
                         dayCount: 30
                     }
                     ListElement {
+                        pageName: "year"
                         name: qsTr("year")
                         dayCount: 365
                     }
                     ListElement {
+                        pageName: "agenda"
                         name: qsTr("agenda")
                         dayCount: -1
                     }
@@ -107,6 +112,6 @@ Page {
     }
 
     function selectView() {
-        mainViewLoader.source = "/usr/share/glacier-calendar/qml/pages/"+viewsModel.get(viewChecked.currentIndex).name+"ViewPage.qml"
+        mainViewLoader.source = "/usr/share/glacier-calendar/qml/pages/"+viewsModel.get(viewChecked.currentIndex).pageName+"ViewPage.qml"
     }
 }
