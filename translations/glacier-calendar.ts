@@ -4,8 +4,28 @@
 <context>
     <name>AddEventPage</name>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="30"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="33"/>
         <source>Add event</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="60"/>
+        <source>Label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="71"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="82"/>
+        <source>End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="93"/>
+        <source>All day</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -45,7 +65,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/main.cpp" line="42"/>
+        <location filename="../src/main.cpp" line="46"/>
         <source>Calendar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -55,6 +75,14 @@
     <message>
         <location filename="../src/qml/pages/SettingsPage.qml" line="30"/>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>agenaViewPage</name>
+    <message>
+        <location filename="../src/qml/pages/agenaViewPage.qml" line="50"/>
+        <source>No events</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
