@@ -15,6 +15,7 @@ include(GNUInstallDirs)
 set(QT_MIN_VERSION "5.12.0")
 find_package(Qt5 COMPONENTS Gui Qml Quick LinguistTools REQUIRED)
 find_package(Glacier COMPONENTS App REQUIRED)
+find_package(KF5CalendarCore REQUIRED)
 
 add_subdirectory(src)
 

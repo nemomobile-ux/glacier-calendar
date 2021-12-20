@@ -23,6 +23,9 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
 
+import org.nemomobile.calendar 1.0
+import org.glacier.calendar 1.0
+
 Page{
     id: addEventPage
     headerTools: HeaderToolsLayout {
@@ -31,8 +34,64 @@ Page{
         showBackButton: true
     }
 
-    Label{
-        anchors.centerIn: parent
-        text: "Add event: Not ready"
+    CalendarEvent{
+        id: newEvent
+    }
+
+    Flickable{
+        id: mainContent
+        anchors.fill: parent
+
+        ScrollDecorator{
+            flickable: mainColumn
+        }
+
+        Column{
+            id: mainColumn
+            width: parent.width - Theme.itemSpacingSmall*2
+            spacing: Theme.itemSpacingSmall
+            anchors{
+                left: parent.left
+                leftMargin: Theme.itemSpacingSmall
+            }
+
+            Label{
+                id: eventNameLabel
+                text: qsTr("Label")
+                width: parent.width
+            }
+
+            TextField{
+                id: eventName
+                width: parent.width
+            }
+
+            Label{
+                id: startLabel
+                text: qsTr("Start")
+                width: parent.width
+            }
+
+            TextField{
+                id: start
+                width: parent.width
+            }
+
+            Label{
+                id: endLabel
+                text: qsTr("End")
+                width: parent.width
+            }
+
+            TextField{
+                id: end
+                width: parent.width
+            }
+
+            CheckBox{
+                id: allDay
+                text: qsTr("All day")
+            }
+        }
     }
 }

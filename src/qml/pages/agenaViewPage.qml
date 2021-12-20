@@ -23,12 +23,31 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
 
+import Nemo.Configuration 1.0
+import org.nemomobile.calendar 1.0
+
 Item{
     id: agendaViewPage
     anchors.fill: parent
 
+    property date startDate: new Date()
+
+    ConfigurationValue {
+        id: agenaAreaConfig
+        key: "/home/glacier/calendar/agenaArea"
+        defaultValue: 30
+    }
+
+    AgendaModel{
+        id: agenaModel
+        startDate: startDate
+        endDate:new Date(startDate + agenaAreaConfig.value*60*60*24)
+    }
+
+
     Label{
         anchors.centerIn: parent
-        text: "Agenda: Not ready"
+        text: qsTr("No events")
+        visible: agenaModel.count == 0
     }
 }
