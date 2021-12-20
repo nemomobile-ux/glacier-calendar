@@ -36,6 +36,9 @@ Page{
 
     CalendarEvent{
         id: newEvent
+        onSaved: {
+            pageStack.pop();
+        }
     }
 
     Flickable{
@@ -56,14 +59,17 @@ Page{
             }
 
             Label{
-                id: eventNameLabel
-                text: qsTr("Label")
+                id: summaryLabel
+                text: qsTr("Summary")
                 width: parent.width
             }
 
             TextField{
-                id: eventName
+                id: summary
                 width: parent.width
+                onEditingFinished: {
+                    newEvent.summary = summary.text
+                }
             }
 
             Label{
@@ -75,6 +81,9 @@ Page{
             TextField{
                 id: start
                 width: parent.width
+                onEditingFinished: {
+                    newEvent.startDateTime = new Date(start.text)
+                }
             }
 
             Label{
@@ -86,11 +95,27 @@ Page{
             TextField{
                 id: end
                 width: parent.width
+                onEditingFinished: {
+                    newEvent.endDateTime = new Date(end.text)
+                }
             }
 
             CheckBox{
                 id: allDay
                 text: qsTr("All day")
+                onCheckedChanged: {
+                    newEvent.allDay = allDay.checked
+                }
+            }
+
+            Button{
+                id: saveButton
+                width: parent.width
+                text: qsTr("Save event")
+                enabled: newEvent.correct
+                onClicked: {
+                    newEvent.save()
+                }
             }
         }
     }

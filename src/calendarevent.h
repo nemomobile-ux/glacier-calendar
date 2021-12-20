@@ -58,6 +58,7 @@ public:
 
 signals:
     void saved();
+
     void correctChanged();
     void startDateTimeChanged();
     void endDateTimeChanged();

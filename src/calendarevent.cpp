@@ -18,12 +18,17 @@
  */
 
 #include "calendarevent.h"
+#include "KCalCore/MemoryCalendar"
+#include <QDebug>
 
 CalendarEvent::CalendarEvent(QObject *parent)
     : QObject{parent}
     , m_allDay(false)
+    , m_correct(false)
 {
     m_event = KCalendarCore::Event::Ptr(new KCalendarCore::Event());
+    m_calendar = KCalendarCore::Calendar::Ptr(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
+
     connect(this, &CalendarEvent::startDateTimeChanged, this, &CalendarEvent::calcCorrect);
     connect(this, &CalendarEvent::endDateTimeChanged, this, &CalendarEvent::calcCorrect);
     connect(this, &CalendarEvent::summaryChanged, this, &CalendarEvent::calcCorrect);
@@ -39,6 +44,11 @@ void CalendarEvent::setStartDateTime(QDateTime startDateTime)
 
 void CalendarEvent::setEndDateTime(QDateTime endDateTime)
 {
+    if(!endDateTime.isValid()) {
+        qWarning(Q_FUNC_INFO);
+        return;
+    }
+
     if(endDateTime != m_endDateTime) {
         m_endDateTime = endDateTime;
         emit endDateTimeChanged();
@@ -90,7 +100,11 @@ void CalendarEvent::save()
     m_event->setDescription(m_descrption);
     m_event->setLocation(m_location);
 
-    m_calendar->addEvent(m_event);
+    if(m_calendar->addEvent(m_event)) {
+        emit saved();
+    } else {
+        qWarning("Save event failed");
+    }
 }
 
 void CalendarEvent::calcCorrect()
