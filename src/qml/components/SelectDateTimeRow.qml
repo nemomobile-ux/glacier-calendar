@@ -30,35 +30,69 @@ Row{
 
     spacing: Theme.itemSpacingSmall
 
-    Image {
-        id: selectDateImage
-        height: parent.height-Theme.itemSpacingSmall*2
-        width: height
-        source: "image://theme/calendar-alt"
+    Row {
+        id: selectDateRow
+        height: parent.height
+        spacing: Theme.itemSpacingSmall
 
-        anchors.verticalCenter: parent.verticalCenter
+        Image {
+            id: selectDateImage
+            height: parent.height-Theme.itemSpacingSmall*2
+            width: height
+            source: "image://theme/calendar-alt"
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        TextField{
+            id: selectDateLabel
+            text: app.formatDate(selectedDate)
+            inputMask: "9D.9D.DD"
+
+            onEditingFinished: dateTimeRow.formatDate()
+        }
     }
 
-    Label{
-        id: selectDateLabel
-        text: app.formatDate(selectedDate)
+    Row {
+        id: selectTimeRow
+        height: parent.height
+        spacing: Theme.itemSpacingSmall
+
+        Image {
+            id: selectTimeImage
+            height: parent.height-Theme.itemSpacingSmall*2
+            width: height
+            source: "image://theme/clock"
+
+            visible: selectTime
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        TextField{
+            id: selectTimeLabel
+            text: app.formatTime(selectedDate)
+
+            visible: selectTime
+            inputMask: "99:99"
+
+            onEditingFinished: dateTimeRow.formatDate()
+        }
     }
 
-    Image {
-        id: selectTimeImage
-        height: parent.height-Theme.itemSpacingSmall*2
-        width: height
-        source: "image://theme/clock"
+    function formatDate() {
+        var fDate = selectDateLabel.text.split(".");
+        var fTime = selectTimeLabel.text.split(":");
+        var nD = new Date()
+        nD.setDate(fDate[0])
+        nD.setMonth(fDate[1]-1)
+        nD.setFullYear("20"+fDate[2])
+        nD.setHours(fTime[0])
+        nD.setMinutes(fTime[1])
+        nD.setSeconds(0)
 
-        visible: selectTime
+console.log(nD)
 
-        anchors.verticalCenter: parent.verticalCenter
-    }
-
-    Label{
-        id: selectTimeLabel
-        text: app.formatTime(selectedDate)
-
-        visible: selectTime
+        selectedDate = nD
     }
 }

@@ -146,6 +146,9 @@ Page{
                     newEvent.setStartTime(startDateTimeRow.selectedDate, Qt.LocalTime)
                     newEvent.setEndTime(endDateTimeRow.selectedDate, Qt.LocalTime)
                     newEvent.calendarUid = Calendar.defaultNotebook
+
+                    console.log("??????????????"+startDateTimeRow.selectedDate)
+
                     newEvent.save()
 
                     pageStack.pop()

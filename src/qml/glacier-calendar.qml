@@ -41,7 +41,7 @@ ApplicationWindow {
         if (hh < 10) hh = '0'+hh;
 
         var mm = date.getMinutes()
-        if(mm < 10) mm = 0 + mm;
+        if(mm < 10) mm = '0' + mm;
 
         return hh + ":" + mm;
     }
