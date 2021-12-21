@@ -24,21 +24,19 @@ import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
 
 import org.nemomobile.calendar 1.0
-import org.glacier.calendar 1.0
+
+import "../components"
 
 Page{
     id: addEventPage
+
+    property var newEvent: Calendar.createNewEvent();
+    property date curentDate: new Date()
+
     headerTools: HeaderToolsLayout {
         id: tools
         title: qsTr("Add event")
         showBackButton: true
-    }
-
-    CalendarEvent{
-        id: newEvent
-        onSaved: {
-            pageStack.pop();
-        }
     }
 
     Flickable{
@@ -68,7 +66,7 @@ Page{
                 id: summary
                 width: parent.width
                 onEditingFinished: {
-                    newEvent.summary = summary.text
+                    newEvent.displayLabel = summary.text
                 }
             }
 
@@ -78,12 +76,13 @@ Page{
                 width: parent.width
             }
 
-            TextField{
-                id: start
-                width: parent.width
-                onEditingFinished: {
-                    newEvent.startDateTime = new Date(start.text)
-                }
+            SelectDateTimeRow{
+                id: startDateTimeRow
+                width: startLabel.width
+                height: startLabel.height
+
+                selectedDate: new Date(curentDate.getTime() + 30*60*1000)
+                selectTime: !allDay.checked
             }
 
             Label{
@@ -92,13 +91,15 @@ Page{
                 width: parent.width
             }
 
-            TextField{
-                id: end
-                width: parent.width
-                onEditingFinished: {
-                    newEvent.endDateTime = new Date(end.text)
-                }
+            SelectDateTimeRow{
+                id: endDateTimeRow
+                width: startLabel.width
+                height: startLabel.height
+
+                selectedDate: new Date(curentDate.getTime() + 60*60*1000)
+                selectTime: !allDay.checked
             }
+
 
             CheckBox{
                 id: allDay
@@ -108,13 +109,46 @@ Page{
                 }
             }
 
+            Label{
+                id: descriptionLabel
+                text: qsTr("Summary")
+                width: parent.width
+            }
+
+            TextField{
+                id: description
+                width: parent.width
+                onEditingFinished: {
+                    newEvent.description = description.text
+                }
+            }
+
+            Label{
+                id: locationLabel
+                text: qsTr("Location")
+                width: parent.width
+            }
+
+            TextField{
+                id: location
+                width: parent.width
+                onEditingFinished: {
+                    newEvent.location = location.text
+                }
+            }
+
             Button{
                 id: saveButton
                 width: parent.width
                 text: qsTr("Save event")
-                enabled: newEvent.correct
+                enabled: summaryLabel.text != ""
                 onClicked: {
+                    newEvent.setStartTime(startDateTimeRow.selectedDate, Qt.LocalTime)
+                    newEvent.setEndTime(endDateTimeRow.selectedDate, Qt.LocalTime)
+                    newEvent.calendarUid = Calendar.defaultNotebook
                     newEvent.save()
+
+                    pageStack.pop()
                 }
             }
         }

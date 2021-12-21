@@ -30,7 +30,7 @@ Item{
     id: agendaViewPage
     anchors.fill: parent
 
-    property date startDate: new Date()
+    property date startAgenaDate: new Date()
 
     ConfigurationValue {
         id: agenaAreaConfig
@@ -40,8 +40,8 @@ Item{
 
     AgendaModel{
         id: agenaModel
-        startDate: startDate
-        endDate:new Date(startDate + agenaAreaConfig.value*60*60*24)
+        startDate: app.removeTime(startAgenaDate)
+        endDate: QtDate.addDays(startAgenaDate, agenaAreaConfig.value)
     }
 
 
@@ -49,5 +49,44 @@ Item{
         anchors.centerIn: parent
         text: qsTr("No events")
         visible: agenaModel.count == 0
+    }
+
+    ListView{
+        id: agenaEventsListView
+        anchors.fill: parent
+        model: agenaModel
+        delegate: Item {
+            id: eventView
+            width: parent.width
+            height: Theme.itemHeightLarge
+
+            Rectangle{
+                id: eventColor
+                width: Theme.itemSpacingSmall
+                height: parent.height
+                color: model.event.color
+            }
+
+            Label{
+                id: summary
+                anchors{
+                    top: parent.top
+                    left: eventColor.right
+                    leftMargin: Theme.itemSpacingSmall
+                }
+                text: model.event.displayLabel
+            }
+
+            Label{
+                id: time
+                anchors{
+                    top: summary.bottom
+                    left: eventColor.right
+                    leftMargin: Theme.itemSpacingSmall
+                }
+                text: app.formatTime(model.event.startTime)+" - " + app.formatTime(model.event.endTime)
+                font.pixelSize: Theme.fontSizeTiny
+            }
+        }
     }
 }

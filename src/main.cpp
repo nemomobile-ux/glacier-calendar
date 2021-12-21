@@ -24,7 +24,6 @@
 #include <QScreen>
 
 #include <glacierapp.h>
-#include "calendarevent.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -38,9 +37,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                              | Qt::InvertedLandscapeOrientation
                              | Qt::InvertedPortraitOrientation);
     }
-
-    //qmlRegisterType<KCalendarCore::Event>("org.glacier.calendar",1,0,"CalendarEvent");
-    qmlRegisterType<CalendarEvent>("org.glacier.calendar",1,0,"CalendarEvent");
 
     QQuickWindow *window = GlacierApp::showWindow();
     window->setTitle(QObject::tr("Calendar"));

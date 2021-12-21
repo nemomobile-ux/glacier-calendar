@@ -23,44 +23,42 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
 
-import "pages"
+Row{
+    id: dateTimeRow
+    property date selectedDate: new Date()
+    property bool selectTime: true
 
-ApplicationWindow {
-    id: app
+    spacing: Theme.itemSpacingSmall
 
-    property variant accountItem
+    Image {
+        id: selectDateImage
+        height: parent.height-Theme.itemSpacingSmall*2
+        width: height
+        source: "image://theme/calendar-alt"
 
-    initialPage: Component {
-        CalendarViewPage {
-            id: calendarViewPage
-        }
+        anchors.verticalCenter: parent.verticalCenter
     }
 
-    function formatTime(date) {
-        var hh = date.getHours();
-        if (hh < 10) hh = '0'+hh;
-
-        var mm = date.getMinutes()
-        if(mm < 10) mm = 0 + mm;
-
-        return hh + ":" + mm;
+    Label{
+        id: selectDateLabel
+        text: app.formatDate(selectedDate)
     }
 
-    function formatDate(date) {
-        var dd = date.getDate();
-        if (dd < 10) dd = '0' + dd;
+    Image {
+        id: selectTimeImage
+        height: parent.height-Theme.itemSpacingSmall*2
+        width: height
+        source: "image://theme/clock"
 
-        var mm = date.getMonth() + 1;
-        if (mm < 10) mm = '0' + mm;
+        visible: selectTime
 
-        var yy = date.getFullYear() % 100;
-        if (yy < 10) yy = '0' + yy;
-
-        return dd + '.' + mm + '.' + yy;
+        anchors.verticalCenter: parent.verticalCenter
     }
 
+    Label{
+        id: selectTimeLabel
+        text: app.formatTime(selectedDate)
 
-    function removeTime(date) {
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate())
+        visible: selectTime
     }
 }
