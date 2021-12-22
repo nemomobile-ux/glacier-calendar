@@ -23,12 +23,22 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
 
+import org.nemomobile.calendar 1.0
+
 Item{
     id: dayViewPage
     anchors.fill: parent
 
     property date viwedDate: new Date()
     property bool isTooday: compareDate(new Date(), dayViewPage.viwedDate)
+
+
+    AgendaModel{
+        id: agenaModel
+        startDate: viwedDate
+        endDate: QtDate.addDays(viwedDate, 1)
+    }
+
 
     ListModel {
         id : hourModel
@@ -64,7 +74,7 @@ Item{
             currentTimeInd.visible = true
             hourList.positionViewAtIndex(dayViewPage.viwedDate.getHours(), ListView.Center)
         }
-        calculateYTime();
+        currentTimeLine.y = calculateYTime(new Date())
     }
 
     ListView {
@@ -127,26 +137,53 @@ Item{
                 color : Theme.accentColor
             }
         }
+
+        Repeater{
+            id: eventsRepeater
+            parent: hourList.contentItem
+            model: agenaModel
+
+            delegate: Rectangle{
+                id: eventView
+                color: model.event.color
+                border.color: Theme.textColor
+                width: Theme.itemWidthMedium
+                height: 100
+                y: calculateYTime(model.event.startTime)
+                x: Theme.itemWidthSmall
+
+                Label{
+                    id: eventLabel
+                    text: model.event.displayLabel
+                    width: eventView.width-Theme.itemSpacingExtraSmall*2
+
+                    anchors{
+                        top: parent.top
+                        topMargin: Theme.itemSpacingExtraSmall
+                        left: parent.left
+                        leftMargin: Theme.itemSpacingExtraSmall
+                    }
+                }
+            }
+        }
     }
 
-    function calculateYTime() {
-        if(!isTooday) {
-            return
-        }
-
-        var currentHour = new Date().getHours();
-        var currentMin = new Date().getMinutes();
+    function calculateYTime(date) {
+        var currentHour = date.getHours();
+        var currentMin = date.getMinutes();
 
         var hourY = hourList.contentItem.height/24
         var minY = hourY/60
 
-        currentTimeLine.y = hourY*currentHour+minY*currentMin
+        return hourY*currentHour+minY*currentMin
     }
 
     Timer {
         interval: 1000;
         repeat: true
         running: isTooday
-        onTriggered: calculateYTime()
+        onTriggered: {
+            currentTimeLine.y = calculateYTime(new Date())
+        }
     }
 }
