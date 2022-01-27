@@ -4,28 +4,39 @@
 <context>
     <name>AddEventPage</name>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="33"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="38"/>
         <source>Add event</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="60"/>
-        <source>Label</source>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="61"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="114"/>
+        <source>Summary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="71"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="75"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="82"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="90"/>
         <source>End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="93"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
         <source>All day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="128"/>
+        <source>Location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
+        <source>Save event</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -65,7 +76,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/main.cpp" line="46"/>
+        <location filename="../src/main.cpp" line="42"/>
         <source>Calendar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -79,9 +90,9 @@
     </message>
 </context>
 <context>
-    <name>agenaViewPage</name>
+    <name>agendaViewPage</name>
     <message>
-        <location filename="../src/qml/pages/agenaViewPage.qml" line="50"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="50"/>
         <source>No events</source>
         <translation type="unfinished"></translation>
     </message>
