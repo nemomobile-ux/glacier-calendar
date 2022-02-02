@@ -39,7 +39,7 @@ Item{
     }
 
     AgendaModel{
-        id: agenaModel
+        id: agendaModel
         startDate: app.removeTime(startAgenaDate)
         endDate: QtDate.addDays(startAgenaDate, agenaAreaConfig.value)
     }
@@ -48,13 +48,13 @@ Item{
     Label{
         anchors.centerIn: parent
         text: qsTr("No events")
-        visible: agenaModel.count == 0
+        visible: agendaModel.count == 0
     }
 
     ListView{
         id: agenaEventsListView
         anchors.fill: parent
-        model: agenaModel
+        model: agendaModel
         delegate: Item {
             id: eventView
             width: parent.width
