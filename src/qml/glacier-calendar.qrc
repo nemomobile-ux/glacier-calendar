@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>glacier-calendar.qml</file>
+        <file>components/SelectDateTimeRow.qml</file>
+        <file>components/MonthViewDataPickerDelegate.qml</file>
+        <file>pages/agendaViewPage.qml</file>
+        <file>pages/AddEventPage.qml</file>
+        <file>pages/monthViewPage.qml</file>
+        <file>pages/yearViewPage.qml</file>
+        <file>pages/SettingsPage.qml</file>
+        <file>pages/CalendarViewPage.qml</file>
+        <file>pages/weekViewPage.qml</file>
+        <file>pages/dayViewPage.qml</file>
+    </qresource>
+</RCC>

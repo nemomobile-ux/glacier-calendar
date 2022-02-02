@@ -1,6 +1,9 @@
 set(SRC main.cpp)
 
-add_executable(glacier-calendar ${SRC})
+qtquick_compiler_add_resources(RESOURCES qml/glacier-calendar.qrc)
+
+add_executable(glacier-calendar ${SRC} ${RESOURCES})
+
 
 target_link_libraries(glacier-calendar
 	Qt5::Gui
@@ -10,5 +13,3 @@ target_link_libraries(glacier-calendar
 
 install(TARGETS glacier-calendar RUNTIME
 	DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(DIRECTORY qml
-        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/glacier-calendar)

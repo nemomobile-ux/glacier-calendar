@@ -112,7 +112,7 @@ Page {
     }
 
     function selectView() {
-        mainViewLoader.source = "/usr/share/glacier-calendar/qml/pages/"+viewsModel.get(viewChecked.currentIndex).pageName+"ViewPage.qml"
+        mainViewLoader.source = "qrc:/pages/"+viewsModel.get(viewChecked.currentIndex).pageName+"ViewPage.qml"
         dayViewConfig.value = viewsModel.get(viewChecked.currentIndex).dayCount
     }
 }
