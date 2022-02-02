@@ -34,7 +34,7 @@ Item{
 
 
     AgendaModel{
-        id: agenaModel
+        id: agendaModel
         startDate: viwedDate
         endDate: QtDate.addDays(viwedDate, 1)
     }
@@ -141,7 +141,7 @@ Item{
         Repeater{
             id: eventsRepeater
             parent: hourList.contentItem
-            model: agenaModel
+            model: agendaModel
 
             delegate: Rectangle{
                 id: eventView
