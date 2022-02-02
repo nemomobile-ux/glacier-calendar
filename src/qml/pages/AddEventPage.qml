@@ -111,7 +111,7 @@ Page{
 
             Label{
                 id: descriptionLabel
-                text: qsTr("Summary")
+                text: qsTr("Description")
                 width: parent.width
             }
 
