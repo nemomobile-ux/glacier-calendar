@@ -33,7 +33,7 @@ Item{
     property date startAgenaDate: new Date()
 
     ConfigurationValue {
-        id: agenaAreaConfig
+        id: agendaAreaConfig
         key: "/home/glacier/calendar/agenaArea"
         defaultValue: 30
     }
@@ -41,7 +41,7 @@ Item{
     AgendaModel{
         id: agendaModel
         startDate: app.removeTime(startAgenaDate)
-        endDate: QtDate.addDays(startAgenaDate, agenaAreaConfig.value)
+        endDate: QtDate.addDays(startAgenaDate, agendaAreaConfig.value)
     }
 
 
