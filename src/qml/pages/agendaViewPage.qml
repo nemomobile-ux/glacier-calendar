@@ -30,18 +30,18 @@ Item{
     id: agendaViewPage
     anchors.fill: parent
 
-    property date startAgenaDate: new Date()
+    property date startAgendaDate: new Date()
 
     ConfigurationValue {
         id: agendaAreaConfig
-        key: "/home/glacier/calendar/agenaArea"
+        key: "/home/glacier/calendar/agendaArea"
         defaultValue: 30
     }
 
     AgendaModel{
         id: agendaModel
-        startDate: app.removeTime(startAgenaDate)
-        endDate: QtDate.addDays(startAgenaDate, agendaAreaConfig.value)
+        startDate: app.removeTime(startAgendaDate)
+        endDate: QtDate.addDays(startAgendaDate, agendaAreaConfig.value)
     }
 
 
@@ -52,7 +52,7 @@ Item{
     }
 
     ListView{
-        id: agenaEventsListView
+        id: agendaEventsListView
         anchors.fill: parent
         model: agendaModel
         delegate: Item {
