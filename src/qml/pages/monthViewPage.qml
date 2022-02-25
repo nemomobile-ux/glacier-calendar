@@ -22,6 +22,7 @@ import QtQuick 2.6
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
+import org.nemomobile.calendar 1.0
 
 import "../components"
 
@@ -29,12 +30,65 @@ Item{
     id: monthViewPage
     anchors.fill: parent
 
+    function getFirstDay(date) {
+        return new Date(date.getFullYear(), date.getMonth(), 1);
+    }
+
+    function getLastDay(date) {
+        return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    }
+
+    AgendaModel{
+        id: agendaModel
+        startDate: getFirstDay(new Date(datePicker.selectedDate));
+        endDate: getLastDay(new Date(datePicker.selectedDate));
+        onUpdated: {
+            updateMonthView()
+        }
+    }
+
     DatePicker{
         id: datePicker
         height: parent.height
+        onDateSelect:  {
+            mainViewLoader.setSource ("qrc:/pages/dayViewPage.qml",{viwedDate: date})
+            // FIXME not sure how to work with ButtonRow
+            viewChecked.currentIndex = 0;
+
+
+        }
 
         dayDelegate: MonthViewDataPickerDelegate {
-            currentDate: datePicker.currentDate
+            id: datePickerDelegate
+            numberOfEvents: getEvents(dateOfDay)
         }
     }
+
+    property variant monthData: [];
+//    onMonthDataChanged: { // TODO, is the binding done automatically?
+//        datePicker.numberOfEvents = getEvents(dateOfDay)
+//    }
+
+    function updateMonthView() {
+        var data = []
+        for (var i = 0; i < agendaModel.count; i++) {
+            var event = agendaModel.get(i, AgendaModel.EventObjectRole);
+            var day = event.startTime.getDate()
+            if (typeof data[day] === "undefined") {
+                data[day] = [ event.color ]
+            } else {
+                data[day].push(event.color);
+            }
+        }
+//        console.log(JSON.stringify(data))
+        monthData = data
+    }
+
+    function getEvents(date) {
+        var day = date.getDate();
+        var colors = (monthData[day] !== undefined) ? monthData[day]: [];
+//        console.log( day + " " + colors.length + " " + colors )
+        return colors.length;
+    }
+
 }
