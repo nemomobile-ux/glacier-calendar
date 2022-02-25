@@ -84,7 +84,9 @@ Item{
                     left: eventColor.right
                     leftMargin: Theme.itemSpacingSmall
                 }
-                text: app.formatTime(model.event.startTime)+" - " + app.formatTime(model.event.endTime)
+                property string relativeDate: app.formateDateRelative(model.event.startTime);
+                text: ((relativeDate != "") ? (relativeDate + " ") : "")
+                      + app.formatTime(model.event.startTime)+" - " + app.formatTime(model.event.endTime)
                 font.pixelSize: Theme.fontSizeTiny
             }
         }
