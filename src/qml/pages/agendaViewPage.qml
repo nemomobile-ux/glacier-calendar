@@ -55,40 +55,44 @@ Item{
         id: agendaEventsListView
         anchors.fill: parent
         model: agendaModel
-        delegate: Item {
-            id: eventView
-            width: parent.width
-            height: Theme.itemHeightLarge
+        delegate: ListViewItemWithActions {
 
-            Rectangle{
+            property string relativeDate: app.formateDateRelative(model.event.startTime);
+
+            showNext: false;
+            iconVisible: false;
+            label: model.event.displayLabel
+            description: ((relativeDate != "") ? (relativeDate + " ") : "")
+                         + app.formatTime(model.event.startTime)+" - " + app.formatTime(model.event.endTime)
+
+            actions: [
+                ActionButton {
+                    iconSource: "image://theme/trash"
+                    onClicked: {
+                        model.event.deleteEvent();
+                    }
+                }
+
+            ]
+
+            Rectangle {
                 id: eventColor
-                width: Theme.itemSpacingSmall
-                height: parent.height
+                width: height
+                height: parent.height/2
+                radius: width/2
                 color: model.event.color
+                anchors.right: parent.right
+                anchors.margins: Theme.itemSpacingLarge
+                anchors.verticalCenter: parent.verticalCenter
             }
 
-            Label{
-                id: summary
-                anchors{
-                    top: parent.top
-                    left: eventColor.right
-                    leftMargin: Theme.itemSpacingSmall
-                }
-                text: model.event.displayLabel
+
+            onClicked: {
+                console.log(model.event)
+                pageStack.push(Qt.resolvedUrl("AddEventPage.qml"), { newEvent: model.event })
             }
 
-            Label{
-                id: time
-                anchors{
-                    top: summary.bottom
-                    left: eventColor.right
-                    leftMargin: Theme.itemSpacingSmall
-                }
-                property string relativeDate: app.formateDateRelative(model.event.startTime);
-                text: ((relativeDate != "") ? (relativeDate + " ") : "")
-                      + app.formatTime(model.event.startTime)+" - " + app.formatTime(model.event.endTime)
-                font.pixelSize: Theme.fontSizeTiny
-            }
         }
+
     }
 }
