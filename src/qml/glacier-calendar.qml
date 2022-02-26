@@ -59,6 +59,34 @@ ApplicationWindow {
         return dd + '.' + mm + '.' + yy;
     }
 
+    /**
+      * returns "Today", Day of week when date is less than week in future, or date
+      */
+
+    function formateDateRelative(date) {
+        var now = new Date();
+        if (date.getDate() === now.getDate()) {
+            return qsTr("Today")
+        } else {
+
+            var difference_in_time = date.getTime() - now.getTime();
+
+            if (difference_in_time < 0) { // in past
+                return formatDate(date)
+            }
+
+            // To calculate the no. of days between two dates
+            var difference_in_days = difference_in_time / (1000 * 3600 * 24);
+
+            if (difference_in_days < 7) {
+                return date.toLocaleString(Qt.locale(),'dddd')
+            }
+
+
+            return formatDate(date)
+        }
+    }
+
 
     function removeTime(date) {
         return new Date(date.getFullYear(), date.getMonth(), date.getDate())

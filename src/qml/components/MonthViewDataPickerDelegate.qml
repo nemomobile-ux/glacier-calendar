@@ -40,12 +40,9 @@ Item{
     width: parent.width/7
     height: parent.height/6
 
-    property bool isOtherMonthDay: false
-    property bool isCurrentDay: false
-    property bool isSelectedDay: false
-    property bool hasEventDay: false
-    property date currentDate
-    property date dateOfDay
+    property int numberOfEvents: 0;
+    property bool isCurrentDay: model.isCurrentDay
+    property date dateOfDay: model.dateOfDay
 
     function setColor(model)
     {
@@ -53,7 +50,7 @@ Item{
         /*If weekend*/
         if(model.dateOfDay.getDay() === 0 || model.dateOfDay.getDay() === 6)
         {
-            if(model.isCurrentDay || Qt.formatDate(model.dateOfDay, "yyMMdd") == Qt.formatDate(currentDate, "yyMMdd"))
+            if(model.isCurrentDay)
             {
                 color = Theme.textColor
             }
@@ -74,7 +71,13 @@ Item{
         width: parent.width
         height: parent.height
         color: Theme.accentColor
-        visible: Qt.formatDate(model.dateOfDay, "yyMMdd") == Qt.formatDate(currentDate, "yyMMdd")
+        visible: model.isCurrentDay
+    }
+    Rectangle {
+        width: parent.width
+        height: parent.height
+        color: Theme.fillDarkColor
+        visible: mouse.pressed
     }
 
     Label{
@@ -84,8 +87,36 @@ Item{
         font.pixelSize: (parent.height*0.45 < Theme.fontSizeLarge) ? parent.height*0.45 : Theme.fontSizeLarge
     }
 
+    property int bulletWidth: (dayCell.width/10)-2
+    Row {
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.margins: 10;
+        spacing: 2
+        height: bulletWidth + 2*spacing
+        width: model.count * bulletWidth
+        visible: !model.isOtherMonthDay
+        Repeater {
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left;
+            anchors.right: parent.right
+
+            model: numberOfEvents
+            delegate: Rectangle {
+                color: isCurrentDay ? Theme.textColor: Theme.accentColor;
+                width: bulletWidth
+                height: width
+                radius: width/2
+
+            }
+        }
+    }
+
+
+
 
     MouseArea{
+        id: mouse
         anchors.fill: parent
         onClicked: {
             datePicker.dateSelect(model.dateOfDay)

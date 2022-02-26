@@ -117,4 +117,13 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>glacier-calendar</name>
+    <message>
+        <location filename="../src/qml/glacier-calendar.qml" line="69"/>
+        <location filename="../src/qml/glacier-calendar.qml" line="69"/>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
