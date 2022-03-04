@@ -42,30 +42,30 @@ Item{
 
     ListModel {
         id : hourModel
-        ListElement {hour : "00:00"}
-        ListElement {hour : "01:00"}
-        ListElement {hour : "02:00"}
-        ListElement {hour : "03:00"}
-        ListElement {hour : "04:00"}
-        ListElement {hour : "05:00"}
-        ListElement {hour : "06:00"}
-        ListElement {hour : "07:00"}
-        ListElement {hour : "08:00"}
-        ListElement {hour : "09:00"}
-        ListElement {hour : "10:00"}
-        ListElement {hour : "11:00"}
-        ListElement {hour : "12:00"}
-        ListElement {hour : "13:00"}
-        ListElement {hour : "14:00"}
-        ListElement {hour : "15:00"}
-        ListElement {hour : "16:00"}
-        ListElement {hour : "17:00"}
-        ListElement {hour : "18:00"}
-        ListElement {hour : "19:00"}
-        ListElement {hour : "20:00"}
-        ListElement {hour : "21:00"}
-        ListElement {hour : "22:00"}
-        ListElement {hour : "23:00"}
+        ListElement { hour : "00:00" }
+        ListElement { hour : "01:00" }
+        ListElement { hour : "02:00" }
+        ListElement { hour : "03:00" }
+        ListElement { hour : "04:00" }
+        ListElement { hour : "05:00" }
+        ListElement { hour : "06:00" }
+        ListElement { hour : "07:00" }
+        ListElement { hour : "08:00" }
+        ListElement { hour : "09:00" }
+        ListElement { hour : "10:00" }
+        ListElement { hour : "11:00" }
+        ListElement { hour : "12:00" }
+        ListElement { hour : "13:00" }
+        ListElement { hour : "14:00" }
+        ListElement { hour : "15:00" }
+        ListElement { hour : "16:00" }
+        ListElement { hour : "17:00" }
+        ListElement { hour : "18:00" }
+        ListElement { hour : "19:00" }
+        ListElement { hour : "20:00" }
+        ListElement { hour : "21:00" }
+        ListElement { hour : "22:00" }
+        ListElement { hour : "23:00" }
     }
 
     Component.onCompleted: {
@@ -150,19 +150,22 @@ Item{
             }
         }
 
+
+
         Repeater{
             id: eventsRepeater
             parent: hourList.contentItem
             model: agendaModel
+            property int eventsWidth: Theme.itemWidthLarge
 
             delegate: Rectangle{
                 id: eventView
                 color: model.event.color
                 border.color: Theme.textColor
-                width: Theme.itemWidthMedium
+                width:  eventsRepeater.eventsWidth / getNumberOfOverlapping(model.event.startTime, model.event.endTime)
                 height: calculateHeightTime(model.event.startTime,model.event.endTime)
                 y: calculateYTime(model.event.startTime)
-                x: Theme.itemWidthSmall
+                x: Theme.itemWidthSmall + getIndexOfOverlapping(model.event.startTime,model.event.endTime, model.event.uniqueId) * width
                 z: 2
 
                 Label{
@@ -179,6 +182,32 @@ Item{
                 }
             }
         }
+    }
+
+    function getNumberOfOverlapping(start, end) {
+        var num = 0;
+        for (var i = 0; i < agendaModel.count; i++) {
+            var event = agendaModel.get(i, AgendaModel.EventObjectRole);
+            if (((start < event.endTime) && (start >= event.startTime)) || ((end > event.startTime) && (end <= event.endTime))) {
+                num++;
+            }
+
+        }
+        return num;
+    }
+
+    function getIndexOfOverlapping(start, end, uniqueId) {
+        var num = 0;
+        for (var i = 0; i < agendaModel.count; i++) {
+            var event = agendaModel.get(i, AgendaModel.EventObjectRole);
+            if (event.uniqueId === uniqueId) {
+                break;
+            }
+            if (((start < event.endTime) && (start >= event.startTime)) || ((end > event.startTime) && (end <= event.endTime))) {
+                num++;
+            }
+        }
+        return num;
     }
 
     function calculateYTime(date) {
