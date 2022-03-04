@@ -96,7 +96,7 @@ Page{
                 width: startLabel.width
                 height: startLabel.height
 
-                selectedDate: new Date(curentDate.getTime() + 60*60*1000)
+                selectedDate: new Date(startDateTimeRow.selectedDate.getTime() + 60*60*1000)
                 selectTime: !allDay.checked
             }
 
