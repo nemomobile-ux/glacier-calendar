@@ -115,4 +115,13 @@
         <translation>Žádné události</translation>
     </message>
 </context>
+<context>
+    <name>glacier-calendar</name>
+    <message>
+        <location filename="../src/qml/glacier-calendar.qml" line="69"/>
+        <location filename="../src/qml/glacier-calendar.qml" line="69"/>
+        <source>Today</source>
+        <translation>Dnes</translation>
+    </message>
+</context>
 </TS>
