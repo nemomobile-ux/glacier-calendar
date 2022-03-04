@@ -29,14 +29,14 @@ Item{
     id: dayViewPage
     anchors.fill: parent
 
-    property date viwedDate: new Date()
-    property bool isTooday: compareDate(new Date(), dayViewPage.viwedDate)
+    property date viewedDate: new Date()
+    property bool isToday: compareDate(new Date(), dayViewPage.viewedDate)
 
 
     AgendaModel{
         id: agendaModel
-        startDate: viwedDate
-        endDate: QtDate.addDays(viwedDate, 1)
+        startDate: viewedDate
+        endDate: QtDate.addDays(viewedDate, 1)
     }
 
 
@@ -70,11 +70,23 @@ Item{
 
     Component.onCompleted: {
         var currentDate = new Date();
-        if(isTooday) {
+        if(isToday) {
             currentTimeInd.visible = true
-            hourList.positionViewAtIndex(dayViewPage.viwedDate.getHours(), ListView.Center)
+            hourList.positionViewAtIndex(dayViewPage.viewedDate.getHours(), ListView.Center)
         }
         currentTimeLine.y = calculateYTime(new Date())
+    }
+
+    Text {
+        anchors.right: parent.right
+        anchors.top: parent.top;
+        anchors.rightMargin: Theme.itemSpacingSmall
+        anchors.topMargin: Theme.itemSpacingSmall
+
+        text: viewedDate.toLocaleDateString()
+        z: 1
+        font.pixelSize: Theme.fontSizeTiny
+        color: Theme.textColor
     }
 
     ListView {
@@ -105,7 +117,7 @@ Item{
                     Text {
                         text: hour
                         id: hourText
-                        font.pointSize: Theme.fontSizeTiny
+                        font.pixelSize: Theme.fontSizeSmall
                         color: Theme.textColor
                         anchors{
                             left: parent.left
@@ -125,7 +137,7 @@ Item{
         Item{
             id: currentTimeLine
             width: hourList.width
-            visible: isTooday
+            visible: isToday
             parent: hourList.contentItem
 
             z: 1000
@@ -181,7 +193,7 @@ Item{
     Timer {
         interval: 1000;
         repeat: true
-        running: isTooday
+        running: isToday
         onTriggered: {
             currentTimeLine.y = calculateYTime(new Date())
         }
