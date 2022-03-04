@@ -48,7 +48,7 @@ Row{
             id: selectDateLabel
             text: app.formatDate(selectedDate)
             inputMask: "9D.9D.DD"
-
+            inputMethodHints: Qt.ImhDate
             onEditingFinished: dateTimeRow.formatDate()
         }
     }
@@ -75,6 +75,7 @@ Row{
 
             visible: selectTime
             inputMask: "99:99"
+            inputMethodHints: Qt.ImhTime
 
             onEditingFinished: dateTimeRow.formatDate()
         }
