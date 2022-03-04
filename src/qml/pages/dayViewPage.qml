@@ -160,9 +160,10 @@ Item{
                 color: model.event.color
                 border.color: Theme.textColor
                 width: Theme.itemWidthMedium
-                height: 100
+                height: calculateHeightTime(model.event.startTime,model.event.endTime)
                 y: calculateYTime(model.event.startTime)
                 x: Theme.itemWidthSmall
+                z: 2
 
                 Label{
                     id: eventLabel
@@ -188,6 +189,13 @@ Item{
         var minY = hourY/60
 
         return hourY*currentHour+minY*currentMin
+    }
+
+    function calculateHeightTime(start, end) {
+        var duration = (end.getTime() - start.getTime()) / 1000;
+        var eventHeight = hourList.contentItem.height * duration / 86400;
+//        console.log("duration: " + duration + " " + eventHeight)
+        return eventHeight;
     }
 
     Timer {
