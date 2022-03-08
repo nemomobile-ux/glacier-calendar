@@ -180,6 +180,12 @@ Item{
                         leftMargin: Theme.itemSpacingExtraSmall
                     }
                 }
+                MouseArea {
+                    anchors.fill: parent;
+                    onClicked: {
+                        pageStack.push(Qt.resolvedUrl("AddEventPage.qml"), { oldEvent: model.event })
+                    }
+                }
             }
         }
     }
