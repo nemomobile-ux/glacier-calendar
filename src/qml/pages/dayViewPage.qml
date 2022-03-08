@@ -29,52 +29,64 @@ Item{
     id: dayViewPage
     anchors.fill: parent
 
-    property date viwedDate: new Date()
-    property bool isTooday: compareDate(new Date(), dayViewPage.viwedDate)
+    property date viewedDate: new Date()
+    property bool isToday: compareDate(new Date(), dayViewPage.viewedDate)
 
 
     AgendaModel{
         id: agendaModel
-        startDate: viwedDate
-        endDate: QtDate.addDays(viwedDate, 1)
+        startDate: viewedDate
+        endDate: QtDate.addDays(viewedDate, 1)
     }
 
 
     ListModel {
         id : hourModel
-        ListElement {hour : "00:00"}
-        ListElement {hour : "01:00"}
-        ListElement {hour : "02:00"}
-        ListElement {hour : "03:00"}
-        ListElement {hour : "04:00"}
-        ListElement {hour : "05:00"}
-        ListElement {hour : "06:00"}
-        ListElement {hour : "07:00"}
-        ListElement {hour : "08:00"}
-        ListElement {hour : "09:00"}
-        ListElement {hour : "10:00"}
-        ListElement {hour : "11:00"}
-        ListElement {hour : "12:00"}
-        ListElement {hour : "13:00"}
-        ListElement {hour : "14:00"}
-        ListElement {hour : "15:00"}
-        ListElement {hour : "16:00"}
-        ListElement {hour : "17:00"}
-        ListElement {hour : "18:00"}
-        ListElement {hour : "19:00"}
-        ListElement {hour : "20:00"}
-        ListElement {hour : "21:00"}
-        ListElement {hour : "22:00"}
-        ListElement {hour : "23:00"}
+        ListElement { hour : "00:00" }
+        ListElement { hour : "01:00" }
+        ListElement { hour : "02:00" }
+        ListElement { hour : "03:00" }
+        ListElement { hour : "04:00" }
+        ListElement { hour : "05:00" }
+        ListElement { hour : "06:00" }
+        ListElement { hour : "07:00" }
+        ListElement { hour : "08:00" }
+        ListElement { hour : "09:00" }
+        ListElement { hour : "10:00" }
+        ListElement { hour : "11:00" }
+        ListElement { hour : "12:00" }
+        ListElement { hour : "13:00" }
+        ListElement { hour : "14:00" }
+        ListElement { hour : "15:00" }
+        ListElement { hour : "16:00" }
+        ListElement { hour : "17:00" }
+        ListElement { hour : "18:00" }
+        ListElement { hour : "19:00" }
+        ListElement { hour : "20:00" }
+        ListElement { hour : "21:00" }
+        ListElement { hour : "22:00" }
+        ListElement { hour : "23:00" }
     }
 
     Component.onCompleted: {
         var currentDate = new Date();
-        if(isTooday) {
+        if(isToday) {
             currentTimeInd.visible = true
-            hourList.positionViewAtIndex(dayViewPage.viwedDate.getHours(), ListView.Center)
+            hourList.positionViewAtIndex(dayViewPage.viewedDate.getHours(), ListView.Center)
         }
         currentTimeLine.y = calculateYTime(new Date())
+    }
+
+    Text {
+        anchors.right: parent.right
+        anchors.top: parent.top;
+        anchors.rightMargin: Theme.itemSpacingSmall
+        anchors.topMargin: Theme.itemSpacingSmall
+
+        text: viewedDate.toLocaleDateString()
+        z: 1
+        font.pixelSize: Theme.fontSizeTiny
+        color: Theme.textColor
     }
 
     ListView {
@@ -105,7 +117,7 @@ Item{
                     Text {
                         text: hour
                         id: hourText
-                        font.pointSize: Theme.fontSizeTiny
+                        font.pixelSize: Theme.fontSizeSmall
                         color: Theme.textColor
                         anchors{
                             left: parent.left
@@ -125,7 +137,7 @@ Item{
         Item{
             id: currentTimeLine
             width: hourList.width
-            visible: isTooday
+            visible: isToday
             parent: hourList.contentItem
 
             z: 1000
@@ -138,19 +150,23 @@ Item{
             }
         }
 
+
+
         Repeater{
             id: eventsRepeater
             parent: hourList.contentItem
             model: agendaModel
+            property int eventsWidth: Theme.itemWidthLarge
 
             delegate: Rectangle{
                 id: eventView
                 color: model.event.color
                 border.color: Theme.textColor
-                width: Theme.itemWidthMedium
-                height: 100
+                width:  eventsRepeater.eventsWidth / getNumberOfOverlapping(model.event.startTime, model.event.endTime)
+                height: calculateHeightTime(model.event.startTime,model.event.endTime)
                 y: calculateYTime(model.event.startTime)
-                x: Theme.itemWidthSmall
+                x: Theme.itemWidthSmall + getIndexOfOverlapping(model.event.startTime,model.event.endTime, model.event.uniqueId) * width
+                z: 2
 
                 Label{
                     id: eventLabel
@@ -168,6 +184,32 @@ Item{
         }
     }
 
+    function getNumberOfOverlapping(start, end) {
+        var num = 0;
+        for (var i = 0; i < agendaModel.count; i++) {
+            var event = agendaModel.get(i, AgendaModel.EventObjectRole);
+            if (((start < event.endTime) && (start >= event.startTime)) || ((end > event.startTime) && (end <= event.endTime))) {
+                num++;
+            }
+
+        }
+        return num;
+    }
+
+    function getIndexOfOverlapping(start, end, uniqueId) {
+        var num = 0;
+        for (var i = 0; i < agendaModel.count; i++) {
+            var event = agendaModel.get(i, AgendaModel.EventObjectRole);
+            if (event.uniqueId === uniqueId) {
+                break;
+            }
+            if (((start < event.endTime) && (start >= event.startTime)) || ((end > event.startTime) && (end <= event.endTime))) {
+                num++;
+            }
+        }
+        return num;
+    }
+
     function calculateYTime(date) {
         var currentHour = date.getHours();
         var currentMin = date.getMinutes();
@@ -178,10 +220,17 @@ Item{
         return hourY*currentHour+minY*currentMin
     }
 
+    function calculateHeightTime(start, end) {
+        var duration = (end.getTime() - start.getTime()) / 1000;
+        var eventHeight = hourList.contentItem.height * duration / 86400;
+//        console.log("duration: " + duration + " " + eventHeight)
+        return eventHeight;
+    }
+
     Timer {
         interval: 1000;
         repeat: true
-        running: isTooday
+        running: isToday
         onTriggered: {
             currentTimeLine.y = calculateYTime(new Date())
         }

@@ -31,6 +31,7 @@ Page{
     id: addEventPage
 
     property var newEvent: Calendar.createNewEvent();
+    property var oldEvent;
     property date curentDate: new Date()
 
     headerTools: HeaderToolsLayout {
@@ -65,9 +66,7 @@ Page{
             TextField{
                 id: summary
                 width: parent.width
-                onEditingFinished: {
-                    newEvent.displayLabel = summary.text
-                }
+                text: (oldEvent !== undefined) ? oldEvent.displayLabel : "";
             }
 
             Label{
@@ -81,7 +80,7 @@ Page{
                 width: startLabel.width
                 height: startLabel.height
 
-                selectedDate: new Date(curentDate.getTime() + 30*60*1000)
+                selectedDate: (oldEvent !== undefined) ? oldEvent.startTime : new Date(curentDate.getTime() + 30*60*1000)
                 selectTime: !allDay.checked
             }
 
@@ -96,7 +95,7 @@ Page{
                 width: startLabel.width
                 height: startLabel.height
 
-                selectedDate: new Date(curentDate.getTime() + 60*60*1000)
+                selectedDate: (oldEvent !== undefined) ? oldEvent.endTime :  new Date(startDateTimeRow.selectedDate.getTime() + 60*60*1000)
                 selectTime: !allDay.checked
             }
 
@@ -104,9 +103,7 @@ Page{
             CheckBox{
                 id: allDay
                 text: qsTr("All day")
-                onCheckedChanged: {
-                    newEvent.allDay = allDay.checked
-                }
+                checked: (oldEvent !== undefined) ? oldEvent.allDay : false;
             }
 
             Label{
@@ -118,9 +115,7 @@ Page{
             TextField{
                 id: description
                 width: parent.width
-                onEditingFinished: {
-                    newEvent.description = description.text
-                }
+                text: (oldEvent !== undefined) ? oldEvent.description : ""
             }
 
             Label{
@@ -132,9 +127,7 @@ Page{
             TextField{
                 id: location
                 width: parent.width
-                onEditingFinished: {
-                    newEvent.location = location.text
-                }
+                text: (oldEvent !== undefined) ? oldEvent.location: "";
             }
 
             Button{
@@ -143,8 +136,15 @@ Page{
                 text: qsTr("Save event")
                 enabled: summaryLabel.text != ""
                 onClicked: {
+                    if (oldEvent !== undefined) {
+                        oldEvent.deleteEvent();
+                    }
+                    newEvent.displayLabel = summary.text
                     newEvent.setStartTime(startDateTimeRow.selectedDate, Qt.LocalTime)
                     newEvent.setEndTime(endDateTimeRow.selectedDate, Qt.LocalTime)
+                    newEvent.allDay = allDay.checked
+                    newEvent.description = description.text
+                    newEvent.location = location.text
                     newEvent.calendarUid = Calendar.defaultNotebook
 
                     console.log("??????????????"+startDateTimeRow.selectedDate)

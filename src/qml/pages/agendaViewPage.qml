@@ -88,8 +88,7 @@ Item{
 
 
             onClicked: {
-                console.log(model.event)
-                pageStack.push(Qt.resolvedUrl("AddEventPage.qml"), { newEvent: model.event })
+                pageStack.push(Qt.resolvedUrl("AddEventPage.qml"), { oldEvent: model.event })
             }
 
         }

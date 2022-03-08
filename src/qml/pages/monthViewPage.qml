@@ -51,7 +51,7 @@ Item{
         id: datePicker
         height: parent.height
         onDateSelect:  {
-            mainViewLoader.setSource ("qrc:/pages/dayViewPage.qml",{viwedDate: date})
+            mainViewLoader.setSource ("qrc:/pages/dayViewPage.qml",{viewedDate: date})
             // FIXME not sure how to work with ButtonRow
             viewChecked.currentIndex = 0;
 
