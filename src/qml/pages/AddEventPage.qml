@@ -43,14 +43,13 @@ Page{
     Flickable{
         id: mainContent
         anchors.fill: parent
+        contentHeight: mainColumn.childrenRect.height
+        contentWidth: parent.width;
 
-        ScrollDecorator{
-            flickable: mainColumn
-        }
 
         Column{
             id: mainColumn
-            width: parent.width - Theme.itemSpacingSmall*2
+            width: addEventPage.width - Theme.itemSpacingSmall*2
             spacing: Theme.itemSpacingSmall
             anchors{
                 left: parent.left
@@ -156,4 +155,9 @@ Page{
             }
         }
     }
+
+    ScrollDecorator{
+        flickable: mainContent
+    }
+
 }
