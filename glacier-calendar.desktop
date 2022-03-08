@@ -5,3 +5,5 @@ Exec=/usr/bin/glacier-calendar
 Name=Calendar
 Comment=GlacierUX calendar application
 Name[cs]=Kalendář
+Name[pl]=Kalendarz
+Name[ru]=Календарь
