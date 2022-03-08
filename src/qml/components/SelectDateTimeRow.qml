@@ -34,14 +34,15 @@ Row{
         id: selectDateRow
         height: parent.height
         spacing: Theme.itemSpacingSmall
+        width: parent.width/2 - spacing
 
         Image {
             id: selectDateImage
-            height: parent.height-Theme.itemSpacingSmall*2
+            height: selectDateLabel.height-Theme.itemSpacingSmall*2
             width: height
             source: "image://theme/calendar-alt"
 
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.bottom: parent.bottom
         }
 
         TextField{
@@ -50,6 +51,7 @@ Row{
             inputMask: "9D.9D.DD"
             inputMethodHints: Qt.ImhDate
             onEditingFinished: dateTimeRow.formatDate()
+            width: parent.width - selectDateImage.width - 2*Theme.itemSpacingSmall
         }
     }
 
@@ -57,16 +59,18 @@ Row{
         id: selectTimeRow
         height: parent.height
         spacing: Theme.itemSpacingSmall
+        width: parent.width/2 - spacing
+
 
         Image {
             id: selectTimeImage
-            height: parent.height-Theme.itemSpacingSmall*2
+            height: selectTimeLabel.height-Theme.itemSpacingSmall*2
             width: height
             source: "image://theme/clock"
 
             visible: selectTime
 
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.bottom: parent.bottom
         }
 
         TextField{
@@ -76,6 +80,8 @@ Row{
             visible: selectTime
             inputMask: "99:99"
             inputMethodHints: Qt.ImhTime
+            width: parent.width - selectTimeImage.width - 2*Theme.itemSpacingSmall
+
 
             onEditingFinished: dateTimeRow.formatDate()
         }
