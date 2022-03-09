@@ -2,8 +2,8 @@
 <context>
     <name>AddEventPage</name>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="38"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="38"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="39"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="39"/>
         <source>Add event</source>
         <translation>Добавить событие</translation>
     </message>
@@ -14,38 +14,38 @@
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="75"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="75"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="73"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="73"/>
         <source>Start</source>
         <translation>Начало</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="90"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="90"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="88"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="88"/>
         <source>End</source>
         <translation>Конец</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="104"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="104"/>
         <source>All day</source>
         <translation>Весь день</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="114"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="114"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="110"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="110"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="128"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="128"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="122"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="122"/>
         <source>Location</source>
         <translation>Местоположение</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="135"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="135"/>
         <source>Save event</source>
         <translation>Сохранить событие</translation>
     </message>
@@ -113,6 +113,15 @@
         <location filename="../src/qml/pages/agendaViewPage.qml" line="50"/>
         <source>No events</source>
         <translation>Нет событий</translation>
+    </message>
+</context>
+<context>
+    <name>glacier-calendar</name>
+    <message>
+        <location filename="../src/qml/glacier-calendar.qml" line="69"/>
+        <location filename="../src/qml/glacier-calendar.qml" line="69"/>
+        <source>Today</source>
+        <translation>Сегодня</translation>
     </message>
 </context>
 </TS>
