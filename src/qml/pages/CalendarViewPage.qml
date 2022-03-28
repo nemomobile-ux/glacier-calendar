@@ -48,7 +48,10 @@ Page {
                 showCounter: false
                 onClicked: {
                     if (mainViewLoader.item.viewedDate !== undefined) {
-                        pageStack.push(Qt.resolvedUrl("AddEventPage.qml"), {curentDate: mainViewLoader.item.viewedDate});
+                        var d = new Date(mainViewLoader.item.viewedDate);
+                        var now = new Date();
+                        d.setHours(now.getHours()+1)
+                        pageStack.push(Qt.resolvedUrl("AddEventPage.qml"), {curentDate: d});
                     } else {
                         pageStack.push(Qt.resolvedUrl("AddEventPage.qml"));
                     }
