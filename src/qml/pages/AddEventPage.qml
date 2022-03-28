@@ -79,7 +79,7 @@ Page{
                 width: startLabel.width
                 height: startLabel.height
 
-                selectedDate: (oldEvent !== undefined) ? oldEvent.startTime : new Date(curentDate.getTime() + 30*60*1000)
+                selectedDate: (oldEvent !== undefined) ? oldEvent.startTime : curentDate;
                 selectTime: !allDay.checked
             }
 
@@ -94,7 +94,7 @@ Page{
                 width: startLabel.width
                 height: startLabel.height
 
-                selectedDate: (oldEvent !== undefined) ? oldEvent.endTime :  new Date(startDateTimeRow.selectedDate.getTime() + 60*60*1000)
+                selectedDate: (oldEvent !== undefined) ? oldEvent.endTime :  new Date(startDateTimeRow.selectedDate.getTime() + 30*60*1000)
                 selectTime: !allDay.checked
             }
 

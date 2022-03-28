@@ -48,7 +48,7 @@ Row{
         TextField{
             id: selectDateLabel
             text: app.formatDate(selectedDate)
-            inputMask: "9D.9D.DD"
+            inputMask: "99.99.99"
             inputMethodHints: Qt.ImhDate
             onEditingFinished: dateTimeRow.formatDate()
             width: parent.width - selectDateImage.width - 2*Theme.itemSpacingSmall
