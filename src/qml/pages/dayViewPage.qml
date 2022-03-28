@@ -156,29 +156,32 @@ Item{
             id: eventsRepeater
             parent: hourList.contentItem
             model: agendaModel
-            property int eventsWidth: Theme.itemWidthLarge
+            property int eventsWidth: parent.width - Theme.itemWidthSmall - Theme.itemSpacingExtraSmall
 
             delegate: Rectangle{
                 id: eventView
                 color: model.event.color
                 border.color: Theme.textColor
-                width:  eventsRepeater.eventsWidth / getNumberOfOverlapping(model.event.startTime, model.event.endTime)
+                width:  (eventsRepeater.eventsWidth / getNumberOfOverlapping(model.event.startTime, model.event.endTime)) - Theme.itemSpacingExtraSmall
                 height: calculateHeightTime(model.event.startTime,model.event.endTime)
                 y: calculateYTime(model.event.startTime)
-                x: Theme.itemWidthSmall + getIndexOfOverlapping(model.event.startTime,model.event.endTime, model.event.uniqueId) * width
+                x: Theme.itemWidthSmall + getIndexOfOverlapping(model.event.startTime,model.event.endTime, model.event.uniqueId) * (width + Theme.itemSpacingExtraSmall)
                 z: 2
+                clip: true;
 
                 Label{
                     id: eventLabel
                     text: model.event.displayLabel
-                    width: eventView.width-Theme.itemSpacingExtraSmall*2
 
-                    anchors{
-                        top: parent.top
-                        topMargin: Theme.itemSpacingExtraSmall
-                        left: parent.left
+                    anchors.fill: parent;
+                    anchors {
+                        fill: parent;
+                        topMargin: (eventView.height > Theme.itemHeightSmall) ?  Theme.itemSpacingExtraSmall : 0;
+                        bottomMargin: anchors.topMargin;
                         leftMargin: Theme.itemSpacingExtraSmall
+                        rightMargin: Theme.itemSpacingExtraSmall;
                     }
+
                 }
                 MouseArea {
                     anchors.fill: parent;
