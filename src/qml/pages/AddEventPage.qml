@@ -22,6 +22,7 @@ import QtQuick 2.6
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
+import Nemo.Dialogs 1.0
 
 import org.nemomobile.calendar 1.0
 
@@ -36,9 +37,40 @@ Page{
 
     headerTools: HeaderToolsLayout {
         id: tools
-        title: qsTr("Add event")
+        title: (oldEvent !== undefined) ? qsTr("Edit event") : qsTr("Add event")
         showBackButton: true
+        tools: [
+            ToolButton {
+                iconSource: "image://theme/trash"
+                onClicked: {
+                    deleteDialog.open()
+                }
+                showCounter: false
+                visible: (oldEvent !== undefined)
+            }
+        ]
     }
+
+    QueryDialog {
+         id: deleteDialog
+         visible: false
+
+         inline: true;
+         cancelText: qsTr("Cancel")
+         acceptText: qsTr("Delete")
+         headingText: qsTr("Are you sure you want to delete event?")
+
+         icon: "image://theme/trash"
+
+         onAccepted: {
+             oldEvent.deleteEvent();
+             pageStack.pop();
+         }
+         onSelected: {
+             deleteDialog.close()
+         }
+     }
+
 
     Flickable{
         id: mainContent
@@ -79,7 +111,7 @@ Page{
                 width: startLabel.width
                 height: startLabel.height
 
-                selectedDate: (oldEvent !== undefined) ? oldEvent.startTime : new Date(curentDate.getTime() + 30*60*1000)
+                selectedDate: (oldEvent !== undefined) ? oldEvent.startTime : curentDate;
                 selectTime: !allDay.checked
             }
 

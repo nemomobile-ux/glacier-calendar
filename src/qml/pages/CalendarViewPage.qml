@@ -46,7 +46,16 @@ Page {
             ToolButton {
                 iconSource: "image://theme/plus"
                 showCounter: false
-                onClicked: pageStack.push(Qt.resolvedUrl("AddEventPage.qml"))
+                onClicked: {
+                    if (mainViewLoader.item.viewedDate !== undefined) {
+                        var d = new Date(mainViewLoader.item.viewedDate);
+                        var now = new Date();
+                        d.setHours(now.getHours()+1)
+                        pageStack.push(Qt.resolvedUrl("AddEventPage.qml"), {curentDate: d});
+                    } else {
+                        pageStack.push(Qt.resolvedUrl("AddEventPage.qml"));
+                    }
+                }
             }
         ]
 

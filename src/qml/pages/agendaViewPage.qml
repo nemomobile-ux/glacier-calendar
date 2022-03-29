@@ -22,6 +22,7 @@ import QtQuick 2.6
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Nemo 1.0
 import QtQuick.Controls.Styles.Nemo 1.0
+import Nemo.Dialogs 1.0
 
 import Nemo.Configuration 1.0
 import org.nemomobile.calendar 1.0
@@ -51,6 +52,27 @@ Item{
         visible: agendaModel.count == 0
     }
 
+    QueryDialog {
+         id: deleteDialog
+         visible: false
+         property variant event;
+
+         inline: true;
+         cancelText: qsTr("Cancel")
+         acceptText: qsTr("Delete")
+         headingText: qsTr("Are you sure you want to delete event?")
+
+         icon: "image://theme/trash"
+
+         onAccepted: {
+             event.deleteEvent();
+         }
+         onSelected: {
+             deleteDialog.close()
+         }
+     }
+
+
     ListView{
         id: agendaEventsListView
         anchors.fill: parent
@@ -69,7 +91,8 @@ Item{
                 ActionButton {
                     iconSource: "image://theme/trash"
                     onClicked: {
-                        model.event.deleteEvent();
+                        deleteDialog.event = model.event;
+                        deleteDialog.open();
                     }
                 }
 
