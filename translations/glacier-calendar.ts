@@ -161,7 +161,13 @@
     <message>
         <location filename="../src/qml/pages/agendaViewPage.qml" line="63"/>
         <location filename="../src/qml/pages/agendaViewPage.qml" line="63"/>
-        <source>Are you sure you want to delete event?</source>
+        <source>Event will be deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="64"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="64"/>
+        <source>Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

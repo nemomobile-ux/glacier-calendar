@@ -60,7 +60,8 @@ Item{
          inline: true;
          cancelText: qsTr("Cancel")
          acceptText: qsTr("Delete")
-         headingText: qsTr("Are you sure you want to delete event?")
+         headingText: qsTr("Event will be deleted")
+         subLabelText: qsTr("Are you sure?")
 
          icon: "image://theme/trash"
 
