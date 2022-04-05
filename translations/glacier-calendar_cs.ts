@@ -2,50 +2,80 @@
 <context>
     <name>AddEventPage</name>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="38"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="38"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
         <source>Add event</source>
         <translation>Přidat událost</translation>
     </message>
     <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
+        <source>Edit event</source>
+        <translation>Upravit událost</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="59"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="59"/>
+        <source>Cancel</source>
+        <translation>Zrušit</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="60"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="60"/>
+        <source>Delete</source>
+        <translation>Smazat</translation>
+    </message>
+    <message>
         <location filename="../src/qml/pages/AddEventPage.qml" line="61"/>
         <location filename="../src/qml/pages/AddEventPage.qml" line="61"/>
+        <source>Event will be deleted</source>
+        <translation>Událost bude smazána</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="62"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="62"/>
+        <source>Are you sure?</source>
+        <translation>Jste si jistý?</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="94"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="94"/>
         <source>Summary</source>
         <translation>Shrnutí</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="75"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="75"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
         <source>Start</source>
         <translation>Začátek</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="90"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="90"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="121"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="121"/>
         <source>End</source>
         <translation>Konec</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="137"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="137"/>
         <source>All day</source>
         <translation>Celý den</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="114"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="114"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
         <source>Description</source>
         <translation>Popis</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="128"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="128"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="155"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="155"/>
         <source>Location</source>
         <translation>Místo</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="168"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="168"/>
         <source>Save event</source>
         <translation>Uložit událost</translation>
     </message>
@@ -59,32 +89,32 @@
         <translation>Kalendář</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="60"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="60"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="69"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="69"/>
         <source>day</source>
         <translation>den</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="65"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="65"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="74"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="74"/>
         <source>week</source>
         <translation>týden</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="70"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="70"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="79"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="79"/>
         <source>month</source>
         <translation>měsíc</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="75"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="75"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="84"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="84"/>
         <source>year</source>
         <translation>rok</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="80"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="80"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="89"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="89"/>
         <source>agenda</source>
         <translation>agenda</translation>
     </message>
@@ -109,10 +139,34 @@
 <context>
     <name>agendaViewPage</name>
     <message>
-        <location filename="../src/qml/pages/agendaViewPage.qml" line="50"/>
-        <location filename="../src/qml/pages/agendaViewPage.qml" line="50"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="51"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="51"/>
         <source>No events</source>
         <translation>Žádné události</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="61"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="61"/>
+        <source>Cancel</source>
+        <translation>Zrušit</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="62"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="62"/>
+        <source>Delete</source>
+        <translation>Smazat</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="63"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="63"/>
+        <source>Event will be deleted</source>
+        <translation>Událost bude smazána</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="64"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="64"/>
+        <source>Are you sure?</source>
+        <translation>Jste si jistý?</translation>
     </message>
 </context>
 <context>
