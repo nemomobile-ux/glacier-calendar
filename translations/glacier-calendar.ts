@@ -76,8 +76,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="168"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="168"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="167"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="167"/>
+        <source>Reminder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="182"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="182"/>
         <source>Save event</source>
         <translation type="unfinished"></translation>
     </message>
