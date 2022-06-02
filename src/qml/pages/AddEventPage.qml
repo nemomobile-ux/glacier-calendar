@@ -171,6 +171,8 @@ Page{
                 id: reminderTime
                 visible: reminderEnabled.checked
                 text: (oldEvent !== undefined) && (oldEvent.reminder >= 0) ? oldEvent.reminder: 15;
+                inputMask: "9999"
+                inputMethodHints: Qt.ImhDigitsOnly
             }
 
 
