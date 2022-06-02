@@ -162,6 +162,18 @@ Page{
                 text: (oldEvent !== undefined) ? oldEvent.location: "";
             }
 
+            CheckBox{
+                id: reminderEnabled
+                text: qsTr("Reminder")
+                checked: (oldEvent !== undefined) ? (oldEvent.reminder >= 0) : false;
+            }
+            TextField {
+                id: reminderTime
+                visible: reminderEnabled.checked
+                text: (oldEvent !== undefined) && (oldEvent.reminder >= 0) ? oldEvent.reminder: 15;
+            }
+
+
             Button{
                 id: saveButton
                 width: parent.width
@@ -170,6 +182,9 @@ Page{
                 onClicked: {
                     if (oldEvent !== undefined) {
                         oldEvent.deleteEvent();
+                    }
+                    if (reminderEnabled.checked) {
+                        newEvent.reminder = reminderTime.text;
                     }
                     newEvent.displayLabel = summary.text
                     newEvent.setStartTime(startDateTimeRow.selectedDate, Qt.LocalTime)
