@@ -2,50 +2,86 @@
 <context>
     <name>AddEventPage</name>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="39"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="39"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
         <source>Add event</source>
         <translation>Добавить событие</translation>
     </message>
     <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="40"/>
+        <source>Edit event</source>
+        <translation>Редактировать событие</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="59"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="59"/>
+        <source>Cancel</source>
+        <translation>Отменить</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="60"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="60"/>
+        <source>Delete</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
         <location filename="../src/qml/pages/AddEventPage.qml" line="61"/>
         <location filename="../src/qml/pages/AddEventPage.qml" line="61"/>
+        <source>Event will be deleted</source>
+        <translation>Событие будет удалено</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="62"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="62"/>
+        <source>Are you sure?</source>
+        <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="94"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="94"/>
         <source>Summary</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="73"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="73"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="106"/>
         <source>Start</source>
         <translation>Начало</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="88"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="88"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="121"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="121"/>
         <source>End</source>
         <translation>Конец</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="104"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="104"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="137"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="137"/>
         <source>All day</source>
         <translation>Весь день</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="110"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="110"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="143"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="122"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="122"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="155"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="155"/>
         <source>Location</source>
         <translation>Местоположение</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="135"/>
-        <location filename="../src/qml/pages/AddEventPage.qml" line="135"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="167"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="167"/>
+        <source>Reminder</source>
+        <translation>Напоминание</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="182"/>
+        <location filename="../src/qml/pages/AddEventPage.qml" line="182"/>
         <source>Save event</source>
         <translation>Сохранить событие</translation>
     </message>
@@ -59,32 +95,32 @@
         <translation>Календарь</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="60"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="60"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="69"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="69"/>
         <source>day</source>
         <translation>день</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="65"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="65"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="74"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="74"/>
         <source>week</source>
         <translation>неделя</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="70"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="70"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="79"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="79"/>
         <source>month</source>
         <translation>месяц</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="75"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="75"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="84"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="84"/>
         <source>year</source>
         <translation>год</translation>
     </message>
     <message>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="80"/>
-        <location filename="../src/qml/pages/CalendarViewPage.qml" line="80"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="89"/>
+        <location filename="../src/qml/pages/CalendarViewPage.qml" line="89"/>
         <source>agenda</source>
         <translation>расписание</translation>
     </message>
@@ -109,10 +145,34 @@
 <context>
     <name>agendaViewPage</name>
     <message>
-        <location filename="../src/qml/pages/agendaViewPage.qml" line="50"/>
-        <location filename="../src/qml/pages/agendaViewPage.qml" line="50"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="51"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="51"/>
         <source>No events</source>
         <translation>Нет событий</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="61"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="61"/>
+        <source>Cancel</source>
+        <translation>Отменить</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="62"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="62"/>
+        <source>Delete</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="63"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="63"/>
+        <source>Event will be deleted</source>
+        <translation>Событие будет удалено</translation>
+    </message>
+    <message>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="64"/>
+        <location filename="../src/qml/pages/agendaViewPage.qml" line="64"/>
+        <source>Are you sure?</source>
+        <translation>Вы уверены?</translation>
     </message>
 </context>
 <context>
