@@ -19,26 +19,26 @@
 
 #include <QtGui/QGuiApplication>
 
+#include <QScreen>
 #include <QtQml>
 #include <QtQuick/QQuickView>
-#include <QScreen>
 
 #include <glacierapp.h>
 
-Q_DECL_EXPORT int main(int argc, char *argv[])
+Q_DECL_EXPORT int main(int argc, char* argv[])
 {
-    QGuiApplication *app = GlacierApp::app(argc, argv);
+    QGuiApplication* app = GlacierApp::app(argc, argv);
     app->setOrganizationName("NemoMobile");
 
     QScreen* sc = app->primaryScreen();
-    if(sc){
+    if (sc) {
         sc->setOrientationUpdateMask(Qt::LandscapeOrientation
-                             | Qt::PortraitOrientation
-                             | Qt::InvertedLandscapeOrientation
-                             | Qt::InvertedPortraitOrientation);
+            | Qt::PortraitOrientation
+            | Qt::InvertedLandscapeOrientation
+            | Qt::InvertedPortraitOrientation);
     }
 
-    QQuickWindow *window = GlacierApp::showWindow();
+    QQuickWindow* window = GlacierApp::showWindow();
     window->setTitle(QObject::tr("Calendar"));
     window->setIcon(QIcon("/usr/share/glacier-calendar/icons/glacier-calendar.png"));
 
