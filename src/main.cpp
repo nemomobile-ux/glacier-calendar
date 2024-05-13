@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Chupligin Sergey <neochapay@gmail.com>
+ * Copyright (C) 2021-2024 Chupligin Sergey <neochapay@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -30,13 +30,6 @@ Q_DECL_EXPORT int main(int argc, char* argv[])
     QGuiApplication* app = GlacierApp::app(argc, argv);
     app->setOrganizationName("NemoMobile");
 
-    QScreen* sc = app->primaryScreen();
-    if (sc) {
-        sc->setOrientationUpdateMask(Qt::LandscapeOrientation
-            | Qt::PortraitOrientation
-            | Qt::InvertedLandscapeOrientation
-            | Qt::InvertedPortraitOrientation);
-    }
 
     QQuickWindow* window = GlacierApp::showWindow();
     window->setTitle(QObject::tr("Calendar"));

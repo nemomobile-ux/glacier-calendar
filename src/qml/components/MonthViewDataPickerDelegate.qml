@@ -1,6 +1,6 @@
 /****************************************************************************************
 **
-** Copyright (C) 2021 Chupligin Sergey <neochapay@gmail.com>
+** Copyright (C) 2021-2024 Chupligin Sergey <neochapay@gmail.com>
 ** All rights reserved.
 **
 ** You may use this file under the terms of BSD license as follows:
@@ -29,8 +29,11 @@
 **
 ****************************************************************************************/
 
-import QtQuick 2.6
-import QtQuick.Controls.Nemo 1.0
+import QtQuick
+import QtQuick.Controls
+
+import Nemo
+import Nemo.Controls
 
 import Nemo.UX.Models 1.0
 
